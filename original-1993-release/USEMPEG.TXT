@@ -1,0 +1,102 @@
+Hi all you eager MPEG Encoders,
+
+Here is a short  guide to using the DOS port of PVRG MPEG, these guide lines
+should apply to other platforms as well.
+
+I will concentrate my explanation on making XING compatible files as this 
+would appear to be the most popular player on DOS platforms. These files only 
+include I frames but are viewable by all the players I have used.
+
+The tools required to make the sample movie on a DOS platform are as follows:
+
+	1)      The DOS port of PVRG MPEG CODEC called pvrgmpeg.exe
+	2)      The DOS port of PPM2CYUV called ppm2cyuv.exe
+	3)      Image Alchemy from a number of ftp sites.
+			eg /mirrors4/garbo.uwasa.fi/graphics/alch16.zip
+				at wuarchive.wustl.edu
+ 
+
+Image Alchemy may be replaced with giftoppm.exe from the pbmplus set of
+graphics tools.
+
+
+The description is centred around creating a movie called short which consists
+of 10 frames. In the zip file of the binaries of the DOS port you find 6 GIF
+files, these are reduced to 160*120 from the movie supplied with the PVRG
+source code.
+	short0.gif.........short5.gif
+
+Step 1
+	Create the 160 by 120 PPM files
+		alchemy -k -X160 -Y120 short*.gif
+
+	Note Image Alchemy use the extension PNM.
+	
+Step 2
+	Split the images into Y, U and V files.
+
+	ppm2cyuv short0.ppm short -CCIR601
+	
+	Repeat for each frame.
+
+Step 3
+	Create a copy of the middle frames to form a ping-pong effect.(See
+	note later on)
+
+	copy short4.? short6.?
+	copy short3.? short7.?
+	copy short2.? short8.?
+	copy short1.? short9.?
+Step 3
+	Create the movie.
+
+	pvrgmpeg -XING -a 0 -b 9 short -s short.mpg
+
+
+Step 4 
+	Play the movie.
+
+
+The PVRG MPEG CODEC (pvrgmpeg.exe) has many command line settings, you will
+really need to read the full documentation supplied by PVRG to see what they 
+all do.
+
+
+Directing Your Movies:
+
+Hint 1
+
+Select your video clip carefully. It is best if the sequence is suited to a
+ping-pong approach, this simply means that you grab say 5 frames of motion and
+make a movie which consists of the following frame order.
+
+	1,2,3,4,5,4,3,2
+The XING player loops the movie and this frame order means there is continous
+movement, this is not such a problem for longer movies but for short 5-10
+second clips it is important.
+
+Hint 2
+
+The XING player files must be 160*120 and this is not give a very clear picture
+for objetcs/people that are in the distance of the shot. Stick to sequences
+where the object fills the screen rather than lots of still background.
+
+Hint 3
+
+If the object/person is entering the shot try to get it such that they are
+approaching the camera so that they gradually fill the shot.
+
+Hint 4
+
+Remember the images stored are compressed and some image quality is lost. Start
+with a good quality video source.
+
+
+Enjoy the Movies and don't each too much PopCorn.
+
+Graham Logan
+June 15th 1993
+mitgml@dct.ac.uk
+
+"You can't fool me there ain't no Sanity Clause", Chico Marx
+

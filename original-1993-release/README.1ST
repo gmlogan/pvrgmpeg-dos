@@ -1,0 +1,35 @@
+This archive contains the following files:
+
+	README.1ST      This file
+	PVRGMPEG.EXE    My port of the PVRG MPEG CODEC
+	PPM2CYUV.EXE    My port of the PVRG YUV file splitter
+	CYUV2PPM.EXE    My port of the PVRG YUV file combiner
+	MAKEMPEG.TXT    Details of how I did the port
+	USEMPEG.TXT     Details on using PVRGMPEG
+	SHORT.MPG       A XING compatible version of short.mpg supplied
+			by PVRG with the source code.
+	SHORT*.GIF      The 10 frames in GIF format to make SHORT.MPG
+
+I hope I have not offended anybody by putting this archive together. I offer 
+no warranty of any description with respect to my porting.
+
+All of the EXE files were compiled by me from Publicly available source code
+from the FTP sites listed in MAKEMPEG.TXT.
+
+I would like to thank the PVRG group for writing such an excellent encoder
+and for their help in getting at the Alpha release of v1.2 so quickly (I can't 
+name this person as the PVRG copyright notice forbids it). Also I would like
+to thank Jelle van Zeijl for sending me the XING patch originally written by 
+Mats Loftvist which has subsequently been included the Alpha release of v1.2.
+
+Have fun and please mail me to let me know how you get on. A copy of any
+interesting movies would be appreciated.
+
+Graham Logan
+June 15th 1993
+mitgml@dct.ac.uk
+
+"You can't fool me there ain't no Sanity Clause", Chico Marx
+
+
+

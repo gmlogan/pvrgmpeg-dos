@@ -1,0 +1,75 @@
+Hi All you Eager MPEG Makers, here is how to port the PVRG MPEG
+encoder/decoder to DOS/PC (386).
+
+Tools required:
+	Well the ones that I used.
+
+		GNU C version 2.2.2
+		An uncompress util for UNIX .Z files
+		An untar util for UNIX tar files
+		Text Editor (sorry some code needs tweaked)
+		Note: Diff from the GNU File utilities, could be used instead
+Source required:
+		/pub/mpeg/MPEGv1.2.alpha.tar.Z
+			from havefun.stanford.edu
+
+		/pub/mpeg/MPEGDOCv1.1.tar.Z
+			from havefun.stanford.edu
+			documentation still to be updated.
+
+Step 1
+	Decompress the .Z files
+
+Step 2 
+	Untar the resulting tar files.
+	Note that 2 of the file names won't fit in the DOS 8 and 3 name format:
+		transform.c truncates to transfor.c
+		prototype.h truncates to prototyp.h
+
+Step 3
+	Apply patch1 to mem.c
+	Apply patch2 to stream.c
+	Apply patch3 to mpeg.c
+
+	All that is happening here is that the fopen mode is be changed to
+	ensure that files are opened in binary mode, as DOS compilers default
+	to text mode in general.
+
+	If you are editing these files simply search for 'fopen' and alter the 
+	"w" to "wb", "r" to"rb" and "w" to "wb+"
+
+Step 4
+	Compile all 12 files to object files using the following example 
+	command line. 
+
+		GCC -O -c chendct.c
+
+	Ignore the warnings from the compiler about implicit definitions etc.
+
+Step 5
+	Link all the files together to form PVRGMPEG
+
+	gcc lexer.o mpeg.o huffman.o transfor.o codec.o io.o marker.o
+		 me.o mem.o stat.o stream.o chendct.o  -lgcc -lm -o pvrgmpeg
+	
+	Note all one line 
+
+Step 6 
+	Create PVRGMPEG.EXE
+
+	copy /b \gcc\bin\go32.exe+pvrgmpeg pvrgmpeg.exe
+
+		 ^^^^^ alter path to suit!
+
+
+Step 8
+	Use and enjoy.
+
+
+Graham Logan
+June 15th 1993
+mitgml@dct.ac.uk
+
+"You can't fool me there ain't no Sanity Clause", Chico Marx
+
+

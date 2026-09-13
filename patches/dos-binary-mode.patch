@@ -1,0 +1,71 @@
+--- a/source/mem.c	2026-09-13 08:27:52.177567221 +0000
++++ b/source/mem.c	2026-09-13 08:27:52.181159173 +0000
+@@ -161,7 +161,7 @@
+   MEM *temp;
+   FILE *inp;
+ 
+-  if ((inp = fopen(filename,"r")) == NULL)
++  if ((inp = fopen(filename,"rb")) == NULL)
+     {
+       WHEREAMI();
+       printf("Cannot open filename %s.\n",filename);
+@@ -208,7 +208,7 @@
+   MEM *temp;
+   FILE *inp;
+ 
+-  if ((inp = fopen(filename,"r")) == NULL)
++  if ((inp = fopen(filename,"rb")) == NULL)
+     {
+       WHEREAMI();
+       printf("Cannot open filename %s.\n",filename);
+@@ -255,7 +255,7 @@
+   BEGIN("SaveMem");
+   FILE *out;
+ 
+-  if ((out = fopen(filename,"w")) == NULL)
++  if ((out = fopen(filename,"wb")) == NULL)
+     {
+       WHEREAMI();
+       printf("Cannot open filename %s.\n",filename);
+@@ -284,7 +284,7 @@
+   unsigned char *bptr;
+   FILE *out;
+ 
+-  if ((out = fopen(filename,"w")) == NULL)
++  if ((out = fopen(filename,"wb")) == NULL)
+     {
+       WHEREAMI();
+       printf("Cannot open filename %s.\n",filename);
+
+--- a/source/stream.c	2026-09-13 08:27:52.178801968 +0000
++++ b/source/stream.c	2026-09-13 08:27:52.186167556 +0000
+@@ -106,7 +106,7 @@
+ 
+   current_read_byte=0;
+   read_position = -1;
+-  if ((srin = fopen(filename,"r")) == NULL)
++  if ((srin = fopen(filename,"rb")) == NULL)
+     {
+       fprintf(stderr,"Cannot Read Input File\n");
+       exit(ERROR_INIT_FILE);
+@@ -139,7 +139,7 @@
+ 
+   current_write_byte=0;
+   write_position=7;
+-  if ((swout = fopen(filename,"w+")) == NULL)
++  if ((swout = fopen(filename,"wb+")) == NULL)
+     {
+       WHEREAMI();
+       printf("Cannot Open Output File\n");
+
+--- a/source/mpeg.c	2026-09-13 08:27:52.180193636 +0000
++++ b/source/mpeg.c	2026-09-13 08:27:52.187602870 +0000
+@@ -2657,7 +2657,7 @@
+   
+   for(i=0;i<CFrame->NumberComponents;i++)
+     {
+-      if ((test = fopen(CFrame->ComponentFileName[i],"r")) == NULL)
++      if ((test = fopen(CFrame->ComponentFileName[i],"rb")) == NULL)
+ 	{
+ 	  WHEREAMI();
+ 	  printf("Cannot Open FileName %s\n",

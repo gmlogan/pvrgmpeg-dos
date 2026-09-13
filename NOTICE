@@ -1,0 +1,24 @@
+This repository builds on the Portable Video Research Group's (PVRG)
+MPEG-1 codec, developed at Stanford University. PVRG placed this codec in
+the public domain, subject to one condition stated in their original
+distribution:
+
+    "References related to these codecs should NOT use any author's name,
+    or refer to Stanford University. Rather the Portable Video Research
+    Group or the acronym (PVRG) should be used, such as PVRG-MPEG,
+    PVRG-P64, PVRG-JPEG."
+
+This repository honours that condition: references here use "PVRG" or
+"PVRG-MPEG", not individual author names or "Stanford University", when
+referring to the codec's origin. This condition does not restrict copying,
+modification, or redistribution — only how the codec's origin may be
+described.
+
+Source vendored into source/ is taken from:
+    https://github.com/maikmerten/mpeg
+    (a patched-to-build mirror of PVRG-MPEG v1.2.x, itself sourced from the
+    original public-domain release; the exact commit is recorded in
+    source/PROVENANCE.md)
+
+The files in original-1993-release/ are Graham Logan's own 1993 DOS port
+of PVRG-MPEG, republished here by the original author.

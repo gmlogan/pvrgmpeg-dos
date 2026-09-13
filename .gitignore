@@ -1,0 +1,3 @@
+*.o
+source/mpeg
+source/lexer.c.bak
